@@ -1,102 +1,121 @@
-/* FORMAT 3 / LOCOMOTIVE AESTHETIC OVERRIDE
-   Target: HawkEye Template (Dark Version)
+/* FORMAT 3 / LOCOMOTIVE AESTHETIC OVERRIDE 
    -------------------------------------------------------
-   Refined for Sohne Typography + Digital Brutalism
+   Fonts: Sohne (Primary), PP Locomotive (Secondary)
 */
 
-/* --- 0. FONT LOADING --- */
-/* Ensure your font files are in dark/assets/fonts/ */
+/* --- 1. EXACT FONT DEFINITIONS (Based on your uploaded CSS) --- */
 
+/* Sohne Buch (Regular) - From Format 3 */
 @font-face {
     font-family: 'Sohne';
-    src: url('../fonts/Sohne-Leicht.woff2') format('woff2'),
-         url('../fonts/Sohne-Leicht.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Sohne';
-    src: url('../fonts/Sohne-Buch.woff2') format('woff2'),
-         url('../fonts/Sohne-Buch.woff') format('woff');
+    src: url('../fonts/Sohne-Buch-e93b614b.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
+/* Sohne Leicht (Light) - From Format 3 */
 @font-face {
     font-family: 'Sohne';
-    src: url('../fonts/Sohne-Halbfett.woff2') format('woff2'),
-         url('../fonts/Sohne-Halbfett.woff') format('woff');
-    font-weight: 500; /* Mapping Semibold to 500 for CSS logic */
+    src: url('../fonts/Sohne-Leicht-f6abd4c7.woff2') format('woff2');
+    font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 
-/* --- 1. VARIABLES & BASICS --- */
+/* Sohne Breit (Wide) - From Format 3 (Optional Use) */
+@font-face {
+    font-family: 'Sohne Breit';
+    src: url('../fonts/SohneBreit-Buch-a227471a.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* PP Locomotive (Distinctive) - From Locomotive */
+@font-face {
+    font-family: 'LocomotiveNew';
+    src: url('../fonts/PPLocomotiveNew-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Helvetica Now - From Locomotive */
+@font-face {
+    font-family: 'HelveticaNowDisplay';
+    src: url('../fonts/HelveticaNowDisplay-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* --- 2. GLOBAL VARIABLES --- */
 :root {
     --bg-color: #050505;
     --text-color: #E5E5E5;
     --accent-color: #FFFFFF;
-    --line-color: rgba(255, 255, 255, 0.15);
+    --line-color: rgba(255, 255, 255, 0.12);
     
-    /* The Format 3 Font Stack */
-    --font-primary: 'Sohne', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    /* The "Format 3" Stack */
+    --font-primary: 'Sohne', 'HelveticaNowDisplay', 'Helvetica Neue', sans-serif;
+    
+    /* The "Locomotive" Stack (Use for special headers) */
+    --font-display: 'LocomotiveNew', 'Sohne Breit', sans-serif;
 }
 
+/* --- 3. GLOBAL RESETS --- */
 body, html {
     background-color: var(--bg-color) !important;
     color: var(--text-color) !important;
     font-family: var(--font-primary) !important;
     font-weight: 400 !important;
-    letter-spacing: -0.02em !important; /* Sohne looks best tight */
+    letter-spacing: -0.025em !important; /* Tight tracking is key */
     -webkit-font-smoothing: antialiased;
 }
 
-/* Selection Style (Inverted High Contrast) */
+/* Selection */
 ::selection {
     background: var(--accent-color);
     color: var(--bg-color);
 }
 
-/* Remove all rounded corners enforced by Bootstrap or the theme */
+/* Kill Rounded Corners */
 * {
     border-radius: 0 !important;
     box-shadow: none !important;
 }
 
-/* --- 2. NAVIGATION (Overriding .dsn-nav-bar) --- */
+/* --- 4. NAVIGATION --- */
 .site-header, .dsn-nav-bar {
     background-color: transparent !important;
     border-bottom: 1px solid var(--line-color);
     padding: 25px 0 !important;
     mix-blend-mode: difference;
+    backdrop-filter: blur(5px);
 }
 
-/* Menu Links */
 .site-header a, .nav-link, .menu-title {
     font-family: var(--font-primary) !important;
-    font-size: 14px !important;
+    font-size: 13px !important;
     text-transform: uppercase !important;
     letter-spacing: 0.02em !important;
-    font-weight: 500 !important; /* Uses Sohne Halbfett */
+    font-weight: 400 !important;
     color: #fff !important;
 }
 
-/* Hide the default hamburger background circle */
+/* Hamburger Menu Clean Up */
 .menu-icon .icon-m {
     background: transparent !important;
     border: none !important;
 }
-
 .menu-icon .menu-icon-bar {
     background-color: #fff !important;
-    height: 2px !important;
-    width: 30px !important; 
+    height: 1px !important;
+    width: 35px !important;
 }
 
-/* --- 3. HERO SECTION (Overriding .header-hero) --- */
+/* --- 5. TYPOGRAPHY & HERO --- */
 .header-hero, .hero-section {
     display: flex;
     align-items: center;
@@ -104,62 +123,59 @@ body, html {
     padding-top: 120px !important;
 }
 
-/* Massive Headings (Format 3 Style) */
-h1, h2, h3, h4, h5, h6,
+/* The Huge Title */
 h1.title-heading, .hero-content h1, .dsn-hero-title {
     font-family: var(--font-primary) !important;
-    font-weight: 400 !important; /* Sohne Buch looks elegant huge */
+    font-weight: 400 !important;
     text-transform: uppercase;
     color: #fff !important;
+    font-size: clamp(4rem, 14vw, 12rem) !important; /* Massive scaling */
+    line-height: 0.85 !important;
+    margin-bottom: 50px !important;
+    letter-spacing: -0.04em !important;
+    word-spacing: 0.1em;
 }
 
-h1.title-heading, .hero-content h1 {
-    font-size: clamp(3.5rem, 11vw, 10rem) !important;
-    line-height: 0.9 !important;
-    margin-bottom: 40px !important;
-    letter-spacing: -0.03em !important;
-}
-
-/* Subtitles / Meta text */
+/* Subtitles / Meta Data */
 .subtitle, .hero-content p, .dsn-category, .dsn-service-category {
-    font-family: 'Courier New', monospace !important; /* Tech contrast */
+    font-family: 'Courier New', monospace !important; 
     text-transform: uppercase;
-    font-size: 13px !important;
-    letter-spacing: 0.1em !important;
-    opacity: 0.8;
+    font-size: 12px !important;
+    letter-spacing: 0.05em !important;
+    opacity: 0.7;
     margin-bottom: 2rem;
     border-left: 1px solid var(--accent-color);
     padding-left: 20px;
     line-height: 1.4;
 }
 
-/* --- 4. PORTFOLIO GRID (Overriding .work-item & .portfolio-item) --- */
+/* --- 6. PORTFOLIO LIST & GRID --- */
 .root-work, .portfolio-section, .our-work {
     border-top: 1px solid var(--line-color);
 }
 
-/* The Items */
 .work-item, .portfolio-item, .project-item {
-    padding: 80px 0 !important;
+    padding: 90px 0 !important;
     border-bottom: 1px solid var(--line-color);
     background: transparent !important;
     transition: background-color 0.3s ease;
 }
 
 .work-item:hover, .portfolio-item:hover {
-    background-color: rgba(255,255,255,0.02);
+    background-color: rgba(255,255,255,0.03);
 }
 
-/* Images within portfolio */
+/* Image styling - Grayscale to Color on hover */
 .work-item img, .portfolio-item img {
-    filter: grayscale(100%) contrast(110%);
-    transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.5s ease !important;
+    filter: grayscale(100%) contrast(120%) brightness(90%);
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.5s ease !important;
     opacity: 0.9;
     width: 100%;
+    display: block;
 }
 
 .work-item:hover img, .portfolio-item:hover img {
-    filter: grayscale(0%) contrast(100%);
+    filter: grayscale(0%) contrast(100%) brightness(100%);
     transform: scale(1.02);
     opacity: 1;
 }
@@ -167,170 +183,144 @@ h1.title-heading, .hero-content h1 {
 /* Project Titles */
 .work-item .title-block, .project-title, .work-item h4 {
     font-family: var(--font-primary) !important;
-    font-size: clamp(2.5rem, 6vw, 5rem) !important;
+    font-size: clamp(3rem, 7vw, 6rem) !important;
     font-weight: 400 !important;
-    letter-spacing: -0.03em !important;
+    letter-spacing: -0.04em !important;
     text-transform: uppercase;
     margin-top: 30px;
     display: block;
     color: #fff !important;
-    line-height: 0.95 !important;
+    line-height: 0.9 !important;
 }
 
-/* --- 5. SERVICES (Overriding .services-item) --- */
+/* Meta tags below project */
+.work-item .category, .project-cat {
+    font-family: 'Courier New', monospace !important;
+    font-size: 12px !important;
+    margin-top: 10px;
+    opacity: 0.5;
+    text-transform: uppercase;
+}
+
+/* --- 7. SERVICES GRID --- */
 .services-section {
     background-color: var(--bg-color) !important;
 }
 
-/* Force grid layout lines */
 .services-item, .service-box {
     border: 1px solid var(--line-color) !important;
     border-left: none !important; 
     background: transparent !important;
-    padding: 60px 40px !important;
+    padding: 80px 40px !important;
+    height: 100%;
 }
 
-/* First item in a row needs a left border if using bootstrap grid essentially */
-.col-md-4:first-child .services-item {
+/* Enforce left border on the first item of every row */
+.col-md-4:nth-child(3n+1) .services-item {
     border-left: 1px solid var(--line-color) !important;
 }
 
 .services-item h3, .service-title {
-    font-size: 2rem !important;
+    font-size: 2.5rem !important;
     text-transform: uppercase;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     font-weight: 400 !important;
+    letter-spacing: -0.02em !important;
 }
 
 .services-item p {
-    font-size: 1.1rem !important;
-    font-weight: 300 !important; /* Sohne Leicht */
-    opacity: 0.7;
+    font-size: 1.15rem !important;
+    font-weight: 300 !important;
+    opacity: 0.6;
     line-height: 1.5;
+    max-width: 30ch;
 }
 
-/* --- 6. SLIDER OVERRIDES (Swiper) --- */
+/* --- 8. CUSTOM CURSOR & SLIDERS --- */
 .swiper-container {
     overflow: visible !important; 
 }
 
-/* Minimalist Arrows */
-.swiper-button-prev, .swiper-button-next {
-    background: none !important;
-    width: 80px !important;
-    height: 80px !important;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 0 !important;
-    color: #fff !important;
-}
-.swiper-button-prev:after, .swiper-button-next:after {
-    font-size: 16px !important;
-    font-weight: 300;
-}
-
-/* Pagination Lines */
+/* Hide default bullets, use lines */
 .swiper-pagination-bullet {
-    width: 60px !important;
-    height: 1px !important;
+    width: 40px !important;
+    height: 2px !important;
     border-radius: 0 !important;
     background: #fff !important;
-    opacity: 0.3;
-    margin: 0 10px !important;
+    opacity: 0.2;
+    margin: 0 8px !important;
+    transition: all 0.3s ease;
 }
 .swiper-pagination-bullet-active {
     opacity: 1;
-    height: 2px !important;
+    width: 60px !important;
 }
 
-/* --- 7. FORMS (Overriding .contact-form) --- */
-.contact-form input, 
-.contact-form textarea,
-.form-control {
+/* --- 9. FORMS --- */
+.contact-form input, .contact-form textarea, .form-control {
     background: transparent !important;
     border: none !important;
     border-bottom: 1px solid var(--line-color) !important;
     color: #fff !important;
     padding: 30px 0 !important;
-    font-size: 1.5rem !important;
+    font-size: 2rem !important; /* Huge input text */
     font-family: var(--font-primary) !important;
     font-weight: 300 !important;
 }
 
-.contact-form input::placeholder, 
-.contact-form textarea::placeholder {
+.contact-form input::placeholder, .contact-form textarea::placeholder {
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 0.1em;
-    opacity: 0.5;
+    opacity: 0.4;
+    font-family: 'Courier New', monospace;
 }
 
-.contact-form input:focus, 
-.contact-form textarea:focus {
+.contact-form input:focus, .contact-form textarea:focus {
     border-bottom-color: #fff !important;
     outline: none !important;
-    box-shadow: none !important;
 }
 
-/* Submit Button - Plain Text Style */
-button[type="submit"], .btn-submit {
-    margin-top: 50px;
-    background: transparent !important;
-    color: #fff !important;
-    border: 1px solid #fff !important;
-    padding: 20px 60px !important;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    transition: all 0.3s ease;
-}
-
-button[type="submit"]:hover {
+.btn-submit, button[type="submit"] {
+    margin-top: 60px;
     background: #fff !important;
     color: #000 !important;
+    border: none !important;
+    padding: 25px 80px !important;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    font-size: 14px;
+    cursor: pointer;
 }
 
-/* --- 8. FOOTER (Minimalist) --- */
-footer, .footer-1 {
+/* --- 10. FOOTER --- */
+footer {
     background-color: var(--bg-color) !important;
     border-top: 1px solid var(--line-color);
-    padding: 100px 0 50px 0 !important;
+    padding: 120px 0 60px 0 !important;
 }
 
 .footer-social a {
     font-family: 'Courier New', monospace !important;
-    text-transform: uppercase;
-    margin-right: 30px;
     font-size: 14px;
-    text-decoration: none !important;
+    margin-right: 40px;
+    text-decoration: none;
     position: relative;
 }
 
-.footer-social a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0%;
-    height: 1px;
-    background: #fff;
-    transition: width 0.3s ease;
-}
-
-.footer-social a:hover::after {
-    width: 100%;
-}
-
-/* --- 9. UTILITIES --- */
-/* Helper for that "Format 3" large paragraph text */
-.lead-text {
-    font-size: clamp(1.2rem, 2vw, 2rem);
-    line-height: 1.2;
-    font-weight: 300; /* Sohne Leicht */
-    max-width: 40ch;
-}
-
-.text-uppercase {
-    letter-spacing: 0.05em !important;
+/* --- 11. MOBILE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+    h1.title-heading, .hero-content h1 {
+        font-size: 4.5rem !important; /* Still big on mobile */
+    }
+    .work-item, .portfolio-item {
+        padding: 40px 0 !important;
+    }
+    .services-item {
+        border-left: 1px solid var(--line-color) !important; /* Reset borders for stacked mobile view */
+        padding: 40px 20px !important;
+    }
 }
 
 
